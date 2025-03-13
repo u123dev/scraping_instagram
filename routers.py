@@ -16,7 +16,7 @@ router = APIRouter()
 
 
 @router.get(
-    "/posts",
+    "/posts/",
     response_model=PostListResponseSchema,
     summary="Get a paginated list of posts",
     description=(
@@ -40,7 +40,7 @@ def get_all_posts(
 
 
 @router.post(
-    "/scrape",
+    "/scrape/",
     response_model=List[PostResponseSchema],
     status_code=status.HTTP_200_OK,
     summary="Scrape new posts from Insta",
@@ -53,7 +53,7 @@ def scrape_posts(db: Session = Depends(get_db)):
 
 
 @router.post(
-    "/add_post",
+    "/add_post/",
     response_model=PostResponseSchema,
     status_code=status.HTTP_201_CREATED,
     summary="Add a new post manually",
@@ -80,7 +80,7 @@ async def start_parse():
 
 
 @router.get(
-    "/task_status/{task_id}",
+    "/task_status/{task_id}/",
     summary="Check status of background task",
     description=(
             "<h3>This endpoint checks background task status."
