@@ -81,7 +81,6 @@ async def start_parse():
 
 @router.get(
     "/task_status/{task_id}",
-    "/background_scrape/",
     summary="Check status of background task",
     description=(
             "<h3>This endpoint checks background task status."
