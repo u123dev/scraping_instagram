@@ -73,7 +73,7 @@ docker-compose up --build
 
 Please note:
    * Copy [.env-sample](.env.sample) file to **.env** & set environment variables
-   * Set ```TARGET_NAME``` and ```HASHTAG```  for specific account & hashtag in [scrape.tags_settings.py]()
+   * Set ```TARGET_NAME``` and ```HASHTAG```  for specific account & hashtag in [scrape/tags_settings.py](scrape/tags_settings.py)
 
 
 #### Tasks monitoring - Access Flower / Celery tasks monitoring
