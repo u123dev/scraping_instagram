@@ -1,23 +1,32 @@
 ## Scraping Instagram
 
-This project scrapes posts from Instagram account and saves it to database.
+This project is a Python scraper from Instagram account that does the following: 
+* Gets a list of the last 10 posts from a public Instagram account (e.g. @nasa account). 
+* Parses information about each post: e.g. description, number of likes, number of comments. 
+* Checks for the presence of a certain hashtag (e.g. #Space). 
+* Saves the data to a DB. 
+* Outputs the results in JSON format via API (FastAPI Framework). 
+* Automatically checks for new posts in the selected account every 10 minutes (implemented via Celery + Redis) 
+* Telegram bot sends messages when  the posts  with a given hashtag appears
 
 ## Features:
 ### API to manage posts & tasks.
 
 
   **Endpoints:** 
-   * Get paginated list of posts with possibility to filter by ID or partial URL
+   * ```GET /posts/``` - Get paginated list of posts with possibility to filter by ```ID``` or partial ```URL```
 
-   * Get post by ID
 
-   * Add post manually
+   * ```POST /add_post/``` - Add post manually
 
-   * Scrape all new posts manually (starts "hard" scraping task - not recommended)
 
-   * Scrape all new posts in background mode (**Recommended**)
+   * ```POST /scrape/``` - Scrape all new posts manually (starts "hard" scraping task - not recommended)
 
-   * Check task status & list of new posts as Result
+
+   * ```POST /background_scrape/``` - Scrape all new posts in background mode (**Recommended**)
+
+
+   * ```GET /task_status/{task_id}/``` - Check task status & list of new posts as Result
 
 ### Scraping
 
@@ -68,6 +77,7 @@ Run project:
 ```
 docker-compose up --build
 ```
+
 #### API documentation - Post & Tasks management
    - [https://127.0.0.1:8000/docs](https://127.0.0.1:8000/docs)
 
