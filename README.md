@@ -68,7 +68,8 @@ Run project:
 ```
 docker-compose up --build
 ```
-- [[https://127.0.0.1:8000/docs](https://127.0.0.1:8000/docs)]
+#### API documentation - Post & Tasks management
+   - [https://127.0.0.1:8000/docs](https://127.0.0.1:8000/docs)
 
 Please note:
    * Copy [.env-sample](.env.sample) file to **.env** & set environment variables
