@@ -9,13 +9,13 @@ This project scrapes posts from Instagram account and saves it to database.
   **Endpoints:** 
    * Get paginated list of posts with possibility to filter by ID or partial URL
 
-   * Get post bi ID
+   * Get post by ID
 
    * Add post manually
 
-   * Scrape all new posts manually (starts "hard" task = not recommended)
+   * Scrape all new posts manually (starts "hard" scraping task - not recommended)
 
-   * Scrape all new posts in background mode (*Recommended*)
+   * Scrape all new posts in background mode (**Recommended**)
 
    * Check task status & list of new posts as Result
 
@@ -71,7 +71,7 @@ docker-compose up --build
 - [[https://127.0.0.1:8000/docs](https://127.0.0.1:8000/docs)]
 
 Please note:
-   * Copy [.env-sample](.env-sample) file to **.env** & set environment variables
+   * Copy [.env-sample](.env.sample) file to **.env** & set environment variables
    * Set TARGET_NAME and HASHTAG  for specific account & hashtag
 
 
