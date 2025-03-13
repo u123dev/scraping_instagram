@@ -1,0 +1,61 @@
+services:
+  app:
+    build: .
+    container_name: fastapi-selenium
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - celery
+    environment:
+      - REDIS_HOST=redis
+
+  celery:
+    build: .
+    container_name: celery-worker
+    env_file:
+      - .env
+    command: celery -A celery_worker.app worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  celery-beat:
+    build: .
+    container_name: celery-beat
+    env_file:
+      - .env
+    command: celery -A celery_worker.app beat --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - DEV=True      # run on development server
+      - FLOWER_UNAUTHENTICATED_API=true # Flower API access
+    command: celery -A celery_worker.app flower --address=0.0.0.0
+    depends_on:
+      - redis
+      - celery
