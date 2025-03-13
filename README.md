@@ -54,7 +54,7 @@ Applications are deployed in docker containers:
 ___
 ## Tech Stack & System requirements :
 
-* Python 3.1+
+* Python 3.12
 * FastAPI
 * SqlAlchemy orm
 * SQlite Database
@@ -71,7 +71,7 @@ ___
 ### Run with Docker containers
  System requirements:
 
-* **Docker Desktop 4.+**
+* **Docker Engine** (Docker Desktop 4.+) / **Docker Compose** 
 
 Run project:
 ```
