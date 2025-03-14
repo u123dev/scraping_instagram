@@ -1,7 +1,11 @@
 import os
+from dotenv import load_dotenv
 
 import telebot
 from telebot.apihelper import ApiException
+
+
+load_dotenv()
 
 
 class TelegramSender:
@@ -9,6 +13,9 @@ class TelegramSender:
     def __init__(self, parse_mode=None):
         BOT_TOKEN = os.getenv("BOT_TOKEN")
         CHAT_ID = os.getenv("CHAT_ID")
+
+        if not BOT_TOKEN or not CHAT_ID:
+            raise ValueError("Token or Chat id not defined")
 
         self.tb = telebot.TeleBot(token=BOT_TOKEN, parse_mode=parse_mode)
         self.chat_id = CHAT_ID
